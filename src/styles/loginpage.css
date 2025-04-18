@@ -1,0 +1,110 @@
+/* General page styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e6f0fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  #login-container, #signup-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 400px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  #signup-container{
+    position:fixed;
+    left:calc(50vw - 200px);
+    top:0;
+  }
+  
+  #login-container h1, #signup-container h1 {
+    font-size: 28px;
+    margin-bottom: 1.5rem;
+    color: #004d99;
+  }
+  
+  .form-input {
+    width: 100%;
+    margin-bottom: 1.2rem;
+    padding: 0.8rem;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #b3c7e6;
+    transition: all 0.3s ease;
+  }
+  
+  .form-input:focus {
+    border: 1px solid #0073e6;
+    outline: none;
+  }
+  
+  #signup-button, #login-button {
+    background-color: #0073e6;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #signup-button:hover, #login-button:hover {
+    background-color: #005bb5;
+  }
+  
+  #toggle-login-signup {
+    background: transparent;
+    border: none;
+    color: #0073e6;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  #toggle-login-signup:hover {
+    color: #005bb5;
+  }
+  
+  /* ID-specific styles for each form */
+  #login-form input, #signup-form input {
+    margin-bottom: 1rem;
+  }
+  
+  #confirm-password-input {
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    #login-container, #signup-container {
+      width: 90%;
+    }
+  }
+  
+  .notification {
+    position: fixed;
+    top: 20px; /* Adjust the distance from the top */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: green;
+    color: white;
+    width: 400px;
+    height: 60px;
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Make sure it overlaps other content */
+    border-radius: 5px; /* Optional: for rounded corners */
+    font-size: 16px; /* Optional: adjust font size */
+  }
+  

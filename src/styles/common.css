@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, .div, body {
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+/* styles.css or your main CSS file */
+
+body, html {
+  background-color: transparent; /* Make background transparent */
+}

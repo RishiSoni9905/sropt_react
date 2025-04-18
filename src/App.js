@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import LoginPage from "./components/LoginPage";
+import DriverInterface from "./pages/DriverInterface";
+import DriverLogin from "./pages/DriverLogin";
+import SchoolAdminInterface from "./pages/SchoolAdminInterface";
+import SchoolLogin from "./pages/StudentLogin";
+import StudentInterface from "./pages/StudentInterface";
+import HomePage from "./pages/HomePage";
+import "./styles/common.css";
+import "./styles/styles.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<HomePage />}/>
+          <Route path="/main_login" element={<LoginPage />}/>
+          <Route path="/school_login" element={<SchoolLogin />}/>
+          <Route path="/driver_login" element={<DriverLogin />}/>
+          <Route path="/student_interface" element={<StudentInterface />}/>
+          <Route path="/driver_interface" element={<DriverInterface />}/>
+          <Route path="/school_admin_interface" element={<SchoolAdminInterface />}/>
+          <Route path="*" element={<HomePage/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+export default App; 
