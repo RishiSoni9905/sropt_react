@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 import '../styles/loginpage.css';
 
 const LoginPage = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     schoolName: '',
@@ -28,7 +28,7 @@ const LoginPage = () => {
     const apiUrl = 'http://localhost:5000';
     
     if (isLogin) {
-      // Handle login
+      
       fetch(`${apiUrl}/login_school`, {
         method: 'POST',
         headers: {
@@ -55,7 +55,7 @@ const LoginPage = () => {
         }
       });
     } else {
-      // Handle signup
+      
       if (formData.password !== formData.confirmPassword) {
         alert("Passwords do not match");
         return;
@@ -84,7 +84,7 @@ const LoginPage = () => {
       })
       .then((data) => {
         setNotification(data.message);
-        toggleForm(); // Switch to login after successful signup
+        toggleForm(); 
       })
       .catch((error) => {
         alert(error.message);

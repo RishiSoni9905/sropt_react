@@ -5,7 +5,7 @@ const DriverDetails = () => {
   const [drivers, setDrivers] = useState([]);
   const [visiblePasswordIndex, setVisiblePasswordIndex] = useState(null);
 
-  // Fetch drivers from the backend when the component mounts
+  
   useEffect(() => {
     fetch("http://localhost:5000/drivers")
       .then((response) => response.json())
@@ -15,12 +15,12 @@ const DriverDetails = () => {
       });
   }, []);
 
-  // Toggle password visibility for each row
+  
   const togglePasswordVisibility = (index) => {
     setVisiblePasswordIndex(visiblePasswordIndex === index ? null : index);
   };
 
-  // Remove driver by ID
+  
   const removeDriver = (driver_id) => {
     fetch(`http://localhost:5000/remove_driver?driver_id=${driver_id}`, {
       method: "POST",
@@ -28,7 +28,7 @@ const DriverDetails = () => {
       .then((response) => {
         if (response.ok) {
           alert(`Driver with ID ${driver_id} removed successfully.`);
-          // Update the drivers state to remove the deleted driver from the list
+          
           setDrivers(drivers.filter((driver) => driver.id !== driver_id));
         } else {
           alert(`Failed to remove driver with ID ${driver_id}.`);

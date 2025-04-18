@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useLocation } from "react-router-dom"; // Import useLocation to get query parameters
+import { useLocation } from "react-router-dom"; 
 
 const StudentDetails = () => {
   const [students, setStudents] = useState([]);
   const [showPasswords, setShowPasswords] = useState([]);
-  const location = useLocation(); // Get the current location
+  const location = useLocation(); 
   const queryParams = new URLSearchParams(location.search);
-  const username = queryParams.get("username"); // Extract 'username' from query params
+  const username = queryParams.get("username"); 
 
-  // Fetch student data when the component mounts
+  
   useEffect(() => {
     if (username) {
       fetch(`http://localhost:5000/students?username=${encodeURIComponent(username)}`, {
-        credentials: "include", // Important to include credentials for session-based requests
+        credentials: "include", 
       })
         .then((response) => response.json())
         .then((data) => {
           setStudents(data);
-          setShowPasswords(Array(data.length).fill(false)); // Initialize password visibility state
+          setShowPasswords(Array(data.length).fill(false)); 
         })
         .catch((error) => {
           console.error("Error fetching student data:", error);
@@ -39,7 +39,7 @@ const StudentDetails = () => {
       .then((response) => {
         if (response.ok) {
           alert(`Student ${student_name} removed successfully.`);
-          // Remove the student from the local state
+          
           setStudents(students.filter((student) => student.student_name !== student_name));
         } else {
           alert(`Failed to remove student ${student_name}.`);

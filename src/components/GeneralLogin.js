@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import '../styles/generallogin.css';
 
 const GeneralLogin = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,10 +14,10 @@ const GeneralLogin = (props) => {
       password,
     };
   
-    // Adjust the backend URL (assuming backend runs on localhost:5000)
+    
     const backendUrl = `http://localhost:5000${props.route}`;
   
-    // Send login request to the backend  
+    
     fetch(backendUrl, {
       method: 'POST',
       headers: {
@@ -32,11 +32,11 @@ const GeneralLogin = (props) => {
         throw new Error('Login failed');
       })
       .then(data => {
-        // Set user session data with the correct userType
+        
         const userType = data.user.userType;
         sessionStorage.setItem('user', JSON.stringify({ username, userType }));
   
-        // Redirect based on userType with ?username={username}
+        
         if (userType === 'student') {
           navigate(`/student_interface?username=${encodeURIComponent(username)}`);
         } else if (userType === 'driver') {

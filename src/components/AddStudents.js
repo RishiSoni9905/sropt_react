@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'; // Import eye icons from react-icons
-import PinLocationComponent from './PinLocationComponent'; // Adjust the path as needed
-import axios from 'axios'; // To send the POST request
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'; 
+import PinLocationComponent from './PinLocationComponent'; 
+import axios from 'axios'; 
 
 const AddStudents = () => {
   const [formData, setFormData] = useState({
@@ -10,13 +10,13 @@ const AddStudents = () => {
     contact_no: '',
     school_id: '',
     driver_id: '',
-    attendence_status: '0', // Default attendance status (0 = absent, 1 = present)
+    attendence_status: '0', 
     username: '',
     password: '',
   });
   
-  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
-  const [showPopup, setShowPopup] = useState(false); // State to show success popup
+  const [showPassword, setShowPassword] = useState(false); 
+  const [showPopup, setShowPopup] = useState(false); 
 
   const handleChange = (e) => {
     setFormData({
@@ -28,11 +28,11 @@ const AddStudents = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Make POST request to backend to add student
+    
     axios.post('http://localhost:5000/add_student', formData)
       .then(response => {
         console.log(response.data);
-        // Show popup for 2 seconds after successful response
+        
         setShowPopup(true);
         setTimeout(() => {
           setShowPopup(false);
@@ -146,7 +146,7 @@ const AddStudents = () => {
           <label>Password:</label>
           <div style={{ position: 'relative' }}>
             <input
-              type={showPassword ? 'text' : 'password'} // Show or hide password based on state
+              type={showPassword ? 'text' : 'password'} 
               name="password"
               value={formData.password}
               onChange={handleChange}
@@ -154,7 +154,7 @@ const AddStudents = () => {
             />
             <span
               style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', cursor: 'pointer' }}
-              onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
+              onClick={() => setShowPassword(!showPassword)} 
             >
               {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />} {/* Use react-icons for eye */}
             </span>

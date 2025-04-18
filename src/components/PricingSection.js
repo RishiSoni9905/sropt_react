@@ -1,5 +1,5 @@
 import React from "react";
-import pricingFree from "../Assets/Images/pricing-free.png"; // Adjust the path as necessary
+import pricingFree from "../Assets/Images/pricing-free.png"; 
 import pricingStarter from "../Assets/Images/pricing-starter.png";
 import pricingBusiness from "../Assets/Images/pricing-business.png";
 import pricingUltimate from "../Assets/Images/pricing-ultimate.png";

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom"; // For parsing query params
+import { useSearchParams } from "react-router-dom"; 
 import NavBar from "../components/NavBar";
 import MapsComponentDriver from "../components/MapsComponentDriver";
 
 const StudentInterface = () => {
-  const [present, setPresent] = useState(true); // Default to present
-  const [distanceFromHome, setDistanceFromHome] = useState("2.5 km"); // Example distance
+  const [present, setPresent] = useState(true); 
+  const [distanceFromHome, setDistanceFromHome] = useState("2.5 km"); 
   const [searchParams] = useSearchParams();
-  const username = searchParams.get("username"); // Get username from query params
+  const username = searchParams.get("username"); 
 
   const waypoints = [
     { lat: 26.9124, lng: 75.7873 },
@@ -15,14 +15,14 @@ const StudentInterface = () => {
   ];
 
   useEffect(() => {
-    // Fetch the attendance status and distance when the component mounts
+    
     if (username) {
       fetch(`http://localhost:5000/student_attendance?username=${encodeURIComponent(username)}`)
         .then((response) => response.json())
         .then((data) => {
-          // Update attendance and distance from home
-          setPresent(data.attendence_status === 0); // 0 means present, 1 means absent
-          setDistanceFromHome(data.distanceFromHome); // Example, replace with actual distance if provided
+          
+          setPresent(data.attendence_status === 0); 
+          setDistanceFromHome(data.distanceFromHome); 
         })
         .catch((error) => {
           console.error("Error fetching student data:", error);
@@ -31,8 +31,8 @@ const StudentInterface = () => {
   }, [username]);
 
   const toggleAttendance = () => {
-    // Toggle attendance status and send to backend
-    const newStatus = !present ? 0 : 1; // Inverse the current status
+    
+    const newStatus = !present ? 0 : 1; 
     fetch(`http://localhost:5000/update_attendance?username=${encodeURIComponent(username)}`, {
       method: "POST",
       headers: {
@@ -42,7 +42,7 @@ const StudentInterface = () => {
     })
       .then((response) => {
         if (response.ok) {
-          setPresent(newStatus === 0); // Update attendance status locally
+          setPresent(newStatus === 0); 
         }
       })
       .catch((error) => {
@@ -59,7 +59,7 @@ const StudentInterface = () => {
           <div
             style={{
               color: present ? "green" : "red",
-              backgroundColor: "#f0f0f0", // Neutral color background
+              backgroundColor: "#f0f0f0", 
               padding: "10px",
               borderRadius: "4px",
             }}

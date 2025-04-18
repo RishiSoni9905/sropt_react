@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import axios from "axios"; // Import axios for API requests
+import axios from "axios"; 
 
 const AddDrivers = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +12,7 @@ const AddDrivers = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
-  const [message, setMessage] = useState(null); // Message state for success or error
+  const [message, setMessage] = useState(null); 
 
   const handleChange = (e) => {
     setFormData({
@@ -24,9 +24,9 @@ const AddDrivers = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send POST request to backend API
+      
       const response = await axios.post("http://localhost:5000/add_driver", formData, {
-        withCredentials: true, // Send cookies with request for session management
+        withCredentials: true, 
       });
       setMessage(response.data.message);
     } catch (error) {

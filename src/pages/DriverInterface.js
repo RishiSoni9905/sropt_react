@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom"; // To get query params
+import { useSearchParams } from "react-router-dom"; 
 import ListStudents from "../components/ListStudentsRouting";
 import MapsComponentDriver from "../components/MapsComponentDriver";
 import NavBar from "../components/NavBar";
@@ -7,14 +7,14 @@ import NavBar from "../components/NavBar";
 const DriverInterface = () => {
   const [students, setStudents] = useState([]);
   const [waypoints, setWaypoints] = useState([]);
-  const [searchParams] = useSearchParams(); // Get the query params
-  const username = searchParams.get("username"); // Extract 'username' from query params
+  const [searchParams] = useSearchParams(); 
+  const username = searchParams.get("username"); 
 
-  // Fetch student and school data from the backend
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch the students associated with the driver using the username
+        
         const studentResponse = await fetch(
           `http://localhost:5000/students_for_drivers?username=${encodeURIComponent(username)}`, 
           { credentials: "include" }
@@ -22,27 +22,27 @@ const DriverInterface = () => {
         const studentData = await studentResponse.json();
         setStudents(studentData);
   
-        // Extract waypoints from student addresses
+        
         const studentWaypoints = studentData.map(student => {
           const [lat, lng] = student.address.split(" ").map(Number);
           return { lat, lng };
         });
   
-        // Fetch the school address using the driver's username
+        
         const schoolResponse = await fetch("http://localhost:5000/get_school", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           credentials: "include",
-          body: JSON.stringify({ username }) // Pass driver's username here
+          body: JSON.stringify({ username }) 
         });
   
         if (schoolResponse.ok) {
           const schoolData = await schoolResponse.json();
           const [schoolLat, schoolLng] = schoolData.address.split(" ").map(Number);
   
-          // Update waypoints with school address
+          
           setWaypoints([...studentWaypoints, { lat: schoolLat, lng: schoolLng }]);
         } else {
           console.error("Failed to fetch school data.");
@@ -53,7 +53,7 @@ const DriverInterface = () => {
     };
   
     if (username) {
-      fetchData(); // Only fetch data if the username is present
+      fetchData(); 
     }
   }, [username]);
   

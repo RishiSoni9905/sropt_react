@@ -11,10 +11,10 @@ const SchoolAdminInterface = () => {
   const [activeTab, setActiveTab] = useState('add-drivers');
 
   useEffect(() => {
-    // Check if the user is logged in and is an admin
+    
     const user = JSON.parse(sessionStorage.getItem('user'));
     if (!user || !user.username || user.userType !== 'admin') {
-      navigate('/main_login'); // Redirect to login if not logged in or not an admin
+      navigate('/main_login'); 
     }
   }, [navigate]);
 
